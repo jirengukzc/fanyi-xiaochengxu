@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container page-index">
+  <view class="change">
+    <!--类似a链接，但是只能连接小程序内部几个已有的页面-->
+    <navigator url="/pages/change/change" hover-class="navigator-hover">
+      <block>
+        <text>到{{curLang.chs}}</text>
+        <text class="iconfont icon-down"></text>
+      </block>
+    </navigator>
+  </view>
+
+  <view class="input-area">
+    <!-- x是否展示或隐藏,通过hidden对应的变量，如果是true就隐藏false就展示 -->
+    <text class="iconfont icon-close" hidden="{{hideClearIcon}}" bindtap="onTapClose"></text>
+    <view class="textarea-wrap">
+      <textarea placeholder="请输入翻译的文本" placeholder-style="color: #8995a1" bindinput="onInput" bindconfirm="onConfirm" bindblur="onConfirm" value="{{query}}"></textarea>
+      <!-- value:输入框的内容。输入的信息都在query里面 -->
+    </view>
+
+    <view class="text-area">
+      <view class="text-title">译文</view>
+      <view class="text-result" wx:for="{{result}}" wx:key="index">
+        <text selectable="true">{{item.dst}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="copyright">
+    2019 饥人谷
+  </view>
+</view>
